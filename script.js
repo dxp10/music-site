@@ -111,6 +111,12 @@ function pauseSong(){
 // Play or Pause Event Listener
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
 
+// Pressing spacebar to pause/play
+document.addEventListener("keydown", function(event) {
+    if (event.key === " ") {isPlaying ? pauseSong() : playSong()}
+});
+
+
 // Update DOM
 function loadSong(song){
     title.textContent = song.displayName;
@@ -119,7 +125,7 @@ function loadSong(song){
     image.src = `img/${song.name}.webp`;
 }
 
-//  Current Song
+// Current Song
 let songIndex = 0;
 
 // Previous Song
