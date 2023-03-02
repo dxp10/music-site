@@ -9,6 +9,8 @@ const durationEl = document.getElementById('duration');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+const shuffleBtn = document.getElementById('shuffle');
+
 
 // Music
 const songs = [
@@ -92,6 +94,13 @@ const songs = [
 // Check if Playing
 let isPlaying = false;
 
+// Shuffle song
+function shuffleSong(){
+    songIndex = Math.floor(Math.random() * songs.length)
+    loadSong(songs[songIndex])
+    playSong()
+}
+
 // Play
 function playSong(){
     isPlaying = true;
@@ -170,13 +179,15 @@ function updateProgressBar(e){
         if(durationSeconds){
             durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
 
-        // Calculate display for current time
-        const currentMinutes = Math.floor(currentTime / 60);
-        let currentSeconds = Math.floor(currentTime % 60);
-        if(currentSeconds < 10){
-            currentSeconds = `0${currentSeconds}`;
-        }
-        currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+            // Calculate display for current time
+            const currentMinutes = Math.floor(currentTime / 60);
+            let currentSeconds = Math.floor(currentTime % 60);
+            if(currentSeconds < 10){
+                currentSeconds = `0${currentSeconds}`;
+                console.log("here4")
+            }
+            currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+            console.log("here5")
         }
     }
 }
@@ -193,6 +204,7 @@ function setProgressBar(e){
 // Event Listeners
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+shuffleBtn.addEventListener('click', shuffleSong);
 music.addEventListener('ended', nextSong);
 music.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', setProgressBar);
