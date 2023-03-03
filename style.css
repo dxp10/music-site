@@ -70,6 +70,7 @@ h3 {
 }
 
 .duration-wrapper {
+  font-family: Arial, Helvetica, sans-serif !important;
   position: relative;
   top: -25px;
   display: flex;
@@ -81,7 +82,7 @@ h3 {
   position: relative;
   top: -15px;
   left: 120px;
-  width: 200px;
+  width: 250px;
 }
 
 .fas {
